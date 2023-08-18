@@ -1,5 +1,7 @@
 package instruments;
 
+import Shop.instruments.Drumkit;
+import Shop.instruments.InstrumentType;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -12,7 +14,7 @@ public class DrumkitTest {
 
     @Before
     public void before() {
-        drumkit = new Drumkit(4, false);
+        drumkit = new Drumkit("Tama", "Green Sparkle", InstrumentType.Percussion, "Maple",100.00, 200.00, 4, false);
     }
 
     @Test
@@ -23,6 +25,16 @@ public class DrumkitTest {
     @Test
     public void canGetHardwareIncluded(){
         assertFalse(drumkit.includesHardware());
+    }
+
+    @Test
+    public void canPlay(){
+        assertEquals("Boom boom, crash!", drumkit.play());
+    }
+
+    @Test
+    public void canCalculateMarkup(){
+        assertEquals(100.00, drumkit.calculateMarkup(), 0.001);
     }
 
 }

@@ -1,5 +1,7 @@
 package instruments;
 
+import Shop.instruments.Guitar;
+import Shop.instruments.InstrumentType;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -11,16 +13,26 @@ public class GuitarTest {
 
     @Before
     public void before(){
-        guitar = new Guitar("Steel", true);
+        guitar = new Guitar("Fender", "Red", InstrumentType.String, "wood", 80, 160, "steel", true);
     }
 
     @Test
     public void canGetStringType(){
-        assertEquals("Steel", guitar.getStringType());
+        assertEquals("steel", guitar.getStringType());
     }
 
     @Test
     public void canCheckElectric(){
         assertTrue(guitar.isElectric());
+    }
+
+    @Test
+    public void canPlay(){
+        assertEquals("Twang twang!", guitar.play());
+    }
+
+    @Test
+    public void canCalculateMarkup(){
+        assertEquals(80.00, guitar.calculateMarkup(), 0.001);
     }
 }
